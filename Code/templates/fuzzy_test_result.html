@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuzzy System - Water Drinkability Test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+            width: auto;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h2>Fuzzy System - Water Drinkability Test</h2>
+    <table>
+        <tr>
+            <td>PH:</td>
+            <td>{{ ph }}</td>
+        </tr>
+        <tr>
+            <td>TDS:</td>
+            <td>{{ tds }}</td>
+        </tr>
+        <tr>
+            <td>Turbidity:</td>
+            <td>{{ turbidity }}</td>
+        </tr>
+        <tr>
+            <td>ORP:</td>
+            <td>{{ orp }}</td>
+        </tr>
+    </table>
+    <br>
+    <p>Fuzzy Output: <strong>{{ fuzzy_output }}</strong></p>
+    <p>Water is: <strong>{{ drinkability }}</strong></p>
+</body>
+</html>

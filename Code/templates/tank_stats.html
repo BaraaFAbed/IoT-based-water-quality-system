@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Stats</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tank Stats for ID: {{ id }} (Last {{ numOfDays }} days)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>pH</th>
+                <th>TDS</th>
+                <th>Turbidity</th>
+                <th>ORP</th>
+                <th>Drinkability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample template data, replace with server-side template logic -->
+            {% for entry in data %}
+            <tr>
+                <td>{{ entry.created_at }}</td>
+                <td>{{ entry.field2 }}</td>
+                <td>{{ entry.field3 }}</td>
+                <td>{{ entry.field4 }}</td>
+                <td>{{ entry.field5 }}</td>
+                <td>{{ entry.field6 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

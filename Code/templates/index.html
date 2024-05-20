@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+        a {
+            color: #06c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 10px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type=text] {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+        input[type=submit] {
+            background-color: #06c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #0056b3;
+        }
+        #tankStatsForm, #fuzzyForm, #fuzzyTestForm {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Water Quality System</h1>
+    
+    <h2>Users</h2>
+    <ul>
+        <!-- Sample template data, replace with server-side template logic -->
+        {% for rfid, name in validRFIDs %}
+            <li><strong>RFID:</strong> {{ rfid }} | <strong>Name:</strong> {{ name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Water Tanks</h2>
+    <ul>
+        <!-- Sample template data, replace with server-side template logic -->
+        {% for tank in tankIDs %}
+            <li>Tank ID: {{ tank }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Webpages</h2>
+    <ul>
+        <li><a href="{{ url_for('lastLogin') }}">Last Logged In</a></li>
+        <li><a href="{{ url_for('securityLog') }}">Security Log</a></li>
+	<li><a href="{{ url_for('blockDiagram') }}">Block Diagram</a></li>
+        <li>
+            Tank Stats: 
+            <form id="tankStatsForm" action="#" method="get">
+                <label for="id">ID: </label>
+                <input type="text" id="idInput" name="id" required>
+                <label for="numOfDays">Number of Days: </label>
+                <input type="text" id="numOfDaysInput" name="numOfDays" required>
+                <input type="submit" value="Go">
+            </form>
+        </li>
+        <li>
+            Fuzzy: 
+            <form id="fuzzyForm" action="#" method="get">
+                <label for="type">Type: </label>
+                <input type="text" id="typeInput" name="type" required>
+                <input type="submit" value="Go">
+            </form>
+        </li>
+        <li>
+            Fuzzy Test: 
+            <form id="fuzzyTestForm" action="#" method="get">
+                <label for="ph">pH: </label>
+                <input type="text" id="phInput" name="ph" required>
+                <label for="tds">TDS: </label>
+                <input type="text" id="tdsInput" name="tds" required>
+                <label for="turbidity">Turbidity: </label>
+                <input type="text" id="turbidityInput" name="turbidity" required>
+                <label for="orp">ORP: </label>
+                <input type="text" id="orpInput" name="orp" required>
+                <input type="submit" value="Go">
+            </form>
+        </li>
+    </ul>
+
+    <script>
+        document.getElementById('tankStatsForm').onsubmit = function() {
+            const id = document.getElementById('idInput').value;
+            const numOfDays = document.getElementById('numOfDaysInput').value;
+            this.action = `/tankStats/${id}/${numOfDays}`;
+        }
+
+        document.getElementById('fuzzyForm').onsubmit = function() {
+            const type = document.getElementById('typeInput').value;
+            this.action = `/fuzzy/${type}`;
+        }
+
+        document.getElementById('fuzzyTestForm').onsubmit = function() {
+            const ph = document.getElementById('phInput').value;
+            const tds = document.getElementById('tdsInput').value;
+            const turbidity = document.getElementById('turbidityInput').value;
+            const orp = document.getElementById('orpInput').value;
+            this.action = `/fuzzyTest/${ph}/${tds}/${turbidity}/${orp}`;
+        }
+    </script>
+</body>
+</html>
