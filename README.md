@@ -1,2 +1,2 @@
 # **IoT-based Water Quality Monitoring System - Embedded Systems Project**
-This project was developed in python on a raspberry pi 3. It includes the use of different sensors and communication protocols (I2C, Analog, UART, etc), the use of Flask to create a simple website hosted from the RPi 3, and the use of a rule-based fuzzy logic algorithm to assess the quality of the water. 
+This project was developed in Python on a Raspberry Pi 3. It integrates various sensors and communication protocols (I2C, analog, UART, etc.), utilizes Flask to create a simple website hosted on the Raspberry Pi 3, and employs a rule-based fuzzy logic algorithm to assess water quality.
